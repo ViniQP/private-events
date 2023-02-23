@@ -1,0 +1,14 @@
+<h1>Events!</h1>
+
+<% @events.each do |event| %>
+<div>
+  <h1><%= event.title %></h1>
+</div>
+<div>
+  <p>
+    <%= event.description %><br>
+    This event will start at <%= event.date %>
+  </p>
+</div>
+<% end %>
+
