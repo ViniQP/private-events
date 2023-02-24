@@ -1,14 +1,40 @@
 <h1>Events!</h1>
 
-<% @events.each do |event| %>
-<div>
-  <h1><%= event.title %></h1>
-</div>
-<div>
-  <p>
-    <%= event.description %><br>
-    This event will start at <%= event.date %>
-  </p>
-</div>
+<h1>Upcoming Events</h1>
+<% @events.upcoming.each do |event| %>
+  <div>
+    <a href="<%= event_path(event.id) %>">
+      <h1><%= event.title %></h1>
+    </a>
+  </div>
+  <div>
+    <p>
+      <%= event.description %><br>
+      This event will start on <%= event.date %>
+    </p>
+  </div>
+  <div>
+    <%= button_to "Join", event_attendants_path, 
+        class: 'btn btn-outline-dark',  :method => :post, params: { event: { event_id: event.id} } %> 
+  </div>
+<% end %>
+
+<h1>Past Events</h1>
+<% @events.past.each do |event| %>
+  <div>
+    <a href="<%= event_path(event.id) %>">
+      <h1><%= event.title %></h1>
+    </a>
+  </div>
+  <div>
+    <p>
+      <%= event.description %><br>
+      This event will ended on <%= event.date %>
+    </p>
+  </div>
+  <div>
+    <%= button_to "Join", event_attendants_path, 
+        class: 'btn btn-outline-dark',  :method => :post, params: { event: { event_id: event.id} } %> 
+  </div>
 <% end %>
 

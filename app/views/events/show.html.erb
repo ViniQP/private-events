@@ -6,4 +6,10 @@
       <%= @event.description %><br>
       This event will start at <%= @event.date %>
     </p>
+
+    <h1>Attendees</h1>
+    <h2>Names</h2>
+    <% @event.attendees.each do |attendee| %>
+        <h5><%= attendee.username %> <br></h5>
+    <% end %>
   </div>

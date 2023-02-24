@@ -1,13 +1,29 @@
+<h1>User Info</h1>
+ <p>Username: <%= @user.username %></p>
+ <p>Email: <%= @user.email %></p>
 
+<h1>Events</h1>
   <% @user.events.each do |event| %>
-  <div>
-    <h1><%= event.title %></h1>
-  </div>
-  <div>
-    <p>
-      <%= event.description %><br>
-      This event will start at <%= event.date %>
-    </p>
-  </div>
+    <a href="<%= event_path(event.id) %>">
+      <h3><%= event.title %></h3>
+    </a>
+    <div>
+      <p>
+        <%= event.description %><br>
+        This event will start on <%= event.date %>
+      </p>
+    </div>
   <% end %>
 
+<h1>Events Joined</h1>
+  <% @user.attended_events.each do |event| %>
+    <a href="<%= event_path(event.id) %>">
+      <h3><%= event.title %></h3>
+    </a>
+    <div>
+      <p>
+        <%= event.description %><br>
+        This event will start on <%= event.date %>
+      </p>
+    </div>
+  <% end %>
